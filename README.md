@@ -26,8 +26,10 @@
 ####Irregular verbs:
 **not included yet**
 
+
+
 ###Dictionary
-The dictionary in this repo is converted from a [original ISO-8859 version](http://nlp.nju.edu.cn/MT_Lecture/dic_ec.rar) to UTF-8.
+The dictionary in this repo is converted from a [original ISO-8859 version](http://nlp.nju.edu.cn/MT_Lecture/dic_ec.rar "Nanjing University  NLP resource") to UTF-8.
 
 **DO NOT** use them for any commercial purposes.
 
