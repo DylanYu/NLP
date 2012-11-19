@@ -9,6 +9,7 @@
   3. If none of the original and restored word(if exists) could be found in dictionary, we get nothing.
 
 ###Rules
+
 ####Regular verbs:
 
     *s -> * (SINGULAR3)
@@ -24,11 +25,13 @@
     *??ed -> *? (PAST)(VEN)
 
 ####Irregular verbs:
+
 **not included yet**
 
-
-
 ###Dictionary
+
+The dictionary we employed is an English-Chinese one, which contains the word, charactertistic, and explanation.
+
 The dictionary in this repo is converted from a [original ISO-8859 version](http://nlp.nju.edu.cn/MT_Lecture/dic_ec.rar "Nanjing University  NLP resource") to UTF-8.
 
 **DO NOT** use them for any commercial purposes.
@@ -36,4 +39,36 @@ The dictionary in this repo is converted from a [original ISO-8859 version](http
 
 ##Project 2: Chinese words segmentation
 
-**TODO**
+###Goals
+
+Segment a sentence into phrases using the dictionary and rules.
+
+###Segmentation Algorithm
+
+Forwarding Maximum Matching(FMM).
+
+In practice, we deploy the FMM method with a recursive function.
+
+###Dictionary
+
+The dictionary we employed is a Chinese-English one, and only the Chinese phrases are used for matching.
+
+The dictionary in this repo is converted from a [original ISO-8859 version](http://nlp.nju.edu.cn/MT_Lecture/dic_ce.rar "Nanjing University  NLP resource") to UTF-8.
+
+**DO NOT** use them for any commercial purposes.
+
+##License
+
+This program is distributed under GNU General Public License.
+
+***
+
+Copyright (C) 2012 Dongliang Yu
+
+This program is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.
+
+This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+***
