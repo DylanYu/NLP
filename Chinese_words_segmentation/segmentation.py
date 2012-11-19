@@ -1,9 +1,18 @@
 # coding=utf-8
+
 class Segmentation:
     file_name = 'dic_ce.txt'
     dictionary = []
     #max length of dictionary item
     dict_maxlen = 0
+    result_sentence = ''    
+
+    def __init__(self):
+        file_name = 'dic_ce.txt'
+        dictionary = []
+        #max length of dictionary item
+        dict_maxlen = 0
+        result_sentence = ''    
 
     def __init__(self, file_name):
         self.file_name = file_name
@@ -13,7 +22,7 @@ class Segmentation:
 
     def read_file(self):
         dictionary = []
-        with open(self.file_name) as f:
+        with open('dic_ce.txt') as f:
             line = f.readline()
             while line:
                 #encode the phrase with utf-8
@@ -32,6 +41,8 @@ class Segmentation:
         return None
 
     def segment(self, sentence):
+        if len(sentence) == 0:
+            return
         #We can't do encoding recursively, so 'sentence' should be encoded outside the function
         phrase = ''
         max_phrase = ''
@@ -48,29 +59,38 @@ class Segmentation:
                     max_phrase_len = len(r)
         #phrase not in the dict
         if max_phrase_len == 0:
-            print sentence[0], '|',
+            self.result_sentence += sentence[0]
+            self.result_sentence += '|'
             max_phrase_len = 1
         #phrase in the dict
         else:
-            print max_phrase, '|',
+            self.result_sentence += max_phrase
+            self.result_sentence += '|'
         #recurse
         if max_phrase_len < len(sentence):
             self.segment(sentence[max_phrase_len :])
 
+    #return segmentation result and clean it
+    def get_segmentation(self, sentence):
+        self.segment(sentence)
+        result = self.result_sentence
+        self.result_sentence = ''
+        return result
 
-seg = Segmentation('dic_ce.txt')
-seg.read_file()
-print """
-Please input the sentence you want to do segmentation.
-Quit the program with command 'tuichu'
-"""
-while True:
-    sentence = raw_input('input sentence: ')
-    #encode the sentence with utf-8
-    sentence = unicode(sentence, "utf-8")
-    if sentence != 'tuichu':
-        print 'results:'
-        seg.segment(sentence)
-    else:
-        break
-    print '\n'
+if __name__ == '__main__':
+    seg = Segmentation('dic_ce.txt')
+    seg.read_file()
+    print """
+    Please input the sentence you want to do segmentation.
+    Quit the program with command 'tuichu'
+    """
+    while True:
+        sentence = raw_input('input sentence: ')
+        #encode the sentence with utf-8
+        sentence = unicode(sentence, "utf-8")
+        if sentence != 'tuichu':
+            print 'results:'
+            seg.segment(sentence)
+            print seg.result_sentence
+        else:
+            break

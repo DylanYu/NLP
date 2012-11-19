@@ -57,6 +57,12 @@ The dictionary in this repo is converted from a [original ISO-8859 version](http
 
 **DO NOT** use them for any commercial purposes.
 
+###Usage
+
+You can simply run the program with command `python segmentation.py` in a command line mode.
+
+This program also provides a GUI mode built on [wxPython](http://www.wxpython.org/), a cross-platform GUI library with Python programming language. Please install wxPython 2.8 version to support the GUI mode.
+
 ##License
 
 This program is distributed under GNU General Public License.
