@@ -63,6 +63,10 @@ You can simply run the program with command `python segmentation.py` in a comman
 
 This program also provides a GUI mode built on [wxPython](http://www.wxpython.org/), a cross-platform GUI library with Python programming language. Please install wxPython 2.8 version to support the GUI mode.
 
+##Resources
+
+You must not miss [The Porter Stemming Algorithm](http://tartarus.org/martin/PorterStemmer/), which is recommended by *Hang Qian*.
+
 ##License
 
 This program is distributed under GNU General Public License.

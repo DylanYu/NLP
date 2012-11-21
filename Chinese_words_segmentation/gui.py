@@ -3,7 +3,7 @@
 import wx
 from segmentation import Segmentation
 
-class gui:
+class Gui:
     seg = None    
 
     app = wx.App()
@@ -53,4 +53,4 @@ class gui:
         self.win.Show()
         self.app.MainLoop()
 
-g = gui()
+g = Gui()

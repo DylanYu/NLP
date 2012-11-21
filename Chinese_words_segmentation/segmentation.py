@@ -43,25 +43,29 @@ class Segmentation:
     def segment(self, sentence):
         if len(sentence) == 0:
             return
-        #We can't do encoding recursively, so 'sentence' should be encoded outside the function
+        #We can't do encoding recursively, 
+        #so 'sentence' should be encoded outside the function
         phrase = ''
         max_phrase = ''
-        max_phrase_len = 0
+        max_phrase_len = 1
         count = 0
         for count in range(0, len(sentence)):
             phrase += sentence[count]
             if len(phrase) > self.dict_maxlen:
                 break
             r = self.search(phrase)
-            if r:
-                if len(r) > max_phrase_len:
-                    max_phrase = phrase
-                    max_phrase_len = len(r)
+            #USE CONTINUE TO AVOID NESTING
+            if not r:
+                #nothing found
+                continue
+            if len(r) > max_phrase_len:
+                max_phrase = phrase
+                max_phrase_len = len(r)
         #phrase not in the dict
-        if max_phrase_len == 0:
+        if max_phrase_len == 1:
             self.result_sentence += sentence[0]
             self.result_sentence += '|'
-            max_phrase_len = 1
+            #max_phrase_len`d = 1
         #phrase in the dict
         else:
             self.result_sentence += max_phrase
@@ -88,9 +92,9 @@ if __name__ == '__main__':
         sentence = raw_input('input sentence: ')
         #encode the sentence with utf-8
         sentence = unicode(sentence, "utf-8")
-        if sentence != 'tuichu':
-            print 'results:'
-            seg.segment(sentence)
-            print seg.result_sentence
-        else:
+        if sentence == 'tuichu':
             break
+        else:
+            print 'results:'
+            result = seg.get_segmentation(sentence)
+            print result
